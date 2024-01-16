@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.29.0",
+    "@solana/spl-token": "^0.3.11",
     "@solana/wallet-adapter-base": "^0.9.23",
     "@solana/wallet-adapter-phantom": "^0.9.24",
     "@solana/wallet-adapter-react": "^0.15.35",
@@ -18,10 +19,13 @@
     "@solana/web3.js": "^1.89.1",
     "@tanstack/react-query": "^5.17.14",
     "clsx": "^2.1.0",
+    "dayjs": "^1.11.10",
     "encoding": "^0.1.13",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-icons": "^5.0.1",
+    "react-toastify": "^10.0.2"
   },
   "devDependencies": {
     "@types/node": "^20",
