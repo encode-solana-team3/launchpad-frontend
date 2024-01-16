@@ -46,10 +46,20 @@ const useCreateLaunchpad = () => {
       );
     },
     onSuccess: (result: any) => {
-      toast.success("Launchpad created");
+      toast.update(toastRef.current!, {
+        render: "Launchpad created",
+        type: "success",
+        autoClose: 5000,
+        isLoading: false,
+      });
     },
     onError: (error) => {
-      toast.error(error.message);
+      toast.update(toastRef.current!, {
+        render: error.message,
+        type: "error",
+        autoClose: 5000,
+        isLoading: false,
+      });
     },
   });
 };
