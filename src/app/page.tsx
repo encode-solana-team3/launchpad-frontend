@@ -1,3 +1,4 @@
+import LaunchpadView from "@/components/LaunchpadView";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -10,6 +11,7 @@ export default function Home() {
       <Link href="/create">
         <Button>Step 2: Create a launchpad</Button>
       </Link>
+      <LaunchpadView />
     </div>
   );
 }
