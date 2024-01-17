@@ -4,6 +4,7 @@ import MyButton from "./Button";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { BN } from "@coral-xyz/anchor";
 import dayjs from "dayjs";
+import { Button } from "./ui/button";
 
 type Props = {
   payload: {
@@ -24,7 +25,7 @@ const ButtonCreateLaunchpad: React.FC<Props> = ({ payload }) => {
       rate: payload.rate,
     });
   };
-  return <MyButton onClick={handler}>Create launchpad</MyButton>;
+  return <Button onClick={handler}>Create launchpad</Button>;
 };
 
 export default ButtonCreateLaunchpad;

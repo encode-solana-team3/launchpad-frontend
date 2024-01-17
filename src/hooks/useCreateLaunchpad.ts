@@ -38,8 +38,8 @@ const useCreateLaunchpad = () => {
         program,
         wallet.publicKey,
         new PublicKey(payload.mint),
-        payload.pool_size,
-        payload.unlock_date,
+        new BN(payload.pool_size * LAMPORTS_PER_SOL),
+        new BN(dayjs(payload.unlock_date).unix()),
         payload.max,
         payload.min,
         new BN(payload.rate)
@@ -54,6 +54,7 @@ const useCreateLaunchpad = () => {
       });
     },
     onError: (error) => {
+      console.error(error);
       toast.update(toastRef.current!, {
         render: error.message,
         type: "error",
