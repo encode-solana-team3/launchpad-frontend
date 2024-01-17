@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import useLaunchpad from "@/hooks/useLaunchpad";
 import useStartLaunchpad from "@/hooks/useStartLaunchpad";
+import useCompleteLaunchpad from "@/hooks/useCompleteLaunchpad";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import dayjs from "dayjs";
 
@@ -14,6 +15,7 @@ type Props = {
 const LaunchpadDetailPage: React.FC<Props> = ({ params }) => {
   const { data: launchpad, isPending } = useLaunchpad(params.id);
   const { mutate } = useStartLaunchpad(params.id);
+  const { mutate: mutateComplete } = useCompleteLaunchpad(params.id);
   if (!launchpad || isPending) {
     return <div>Loading...</div>;
   }
@@ -60,7 +62,7 @@ const LaunchpadDetailPage: React.FC<Props> = ({ params }) => {
         {launchpad.status.pending ? (
           <Button onClick={() => mutate()}>Start launchpad</Button>
         ) : null}
-        {launchpad.status.active ? <Button>Complete launchpad</Button> : null}
+        {launchpad.status.active ? <Button onClick={() => mutateComplete()}>Complete launchpad</Button> : null}
         {launchpad.status.active ? <Button>Buy token</Button> : null}
         {dayjs(launchpad.unlockDate.toNumber() * 1000).isBefore(dayjs()) ? (
           <Button>Claim token</Button>
