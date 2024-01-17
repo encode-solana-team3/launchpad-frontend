@@ -3,22 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useProgram } from "@/hooks/useProgram";
-import NodeWallet from "@coral-xyz/anchor/dist/cjs/nodewallet";
 import {
   MintLayout,
   TOKEN_PROGRAM_ID,
   createAssociatedTokenAccountInstruction,
-  createMint,
   createMintToInstruction,
   getAssociatedTokenAddress,
-  getOrCreateAssociatedTokenAccount,
-  mintTo,
 } from "@solana/spl-token";
-import {
-  useAnchorWallet,
-  useConnection,
-  useWallet,
-} from "@solana/wallet-adapter-react";
+import { useWallet } from "@solana/wallet-adapter-react";
 import { Keypair, LAMPORTS_PER_SOL, SystemProgram } from "@solana/web3.js";
 import { useState } from "react";
 import {
