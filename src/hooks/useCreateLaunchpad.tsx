@@ -41,7 +41,7 @@ const useCreateLaunchpad = () => {
         wallet.publicKey,
         new PublicKey(payload.mint),
         new BN(payload.pool_size * LAMPORTS_PER_SOL),
-        new BN(dayjs(payload.unlock_date).unix()),
+        new BN(dayjs(payload.unlock_date).add(1, "m").unix()),
         payload.max,
         payload.min,
         new BN(payload.rate)
