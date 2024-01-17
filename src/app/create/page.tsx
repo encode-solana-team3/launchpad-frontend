@@ -36,8 +36,8 @@ const formSchema = z.object({
   rate: z.string(),
   unlockDate: z.date(),
   poolSize: z.string(),
-  max: z.number(),
-  min: z.number(),
+  max: z.string(),
+  min: z.string(),
 });
 
 const CreatePage = () => {
@@ -50,8 +50,8 @@ const CreatePage = () => {
       rate: "50",
       unlockDate: new Date(),
       poolSize: "10000",
-      max: 8000,
-      min: 100,
+      max: "80000",
+      min: "1000",
     },
   });
   function onSubmit(values: z.infer<typeof formSchema>) {
