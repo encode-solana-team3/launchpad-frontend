@@ -33,9 +33,9 @@ import useCreateLaunchpad from "@/hooks/useCreateLaunchpad";
 
 const formSchema = z.object({
   mint: z.string(),
-  rate: z.number(),
+  rate: z.string(),
   unlockDate: z.date(),
-  poolSize: z.number(),
+  poolSize: z.string(),
   max: z.number(),
   min: z.number(),
 });
@@ -47,9 +47,9 @@ const CreatePage = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       mint: "",
-      rate: 1000,
+      rate: "50",
       unlockDate: new Date(),
-      poolSize: 10000,
+      poolSize: "10000",
       max: 8000,
       min: 100,
     },

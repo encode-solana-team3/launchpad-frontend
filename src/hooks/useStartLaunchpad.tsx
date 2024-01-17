@@ -12,6 +12,7 @@ import {
   findTreasurerAccount,
 } from "@/utils/account";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import TxSubmitted from "@/components/TxSubmitted";
 
 const useStartLaunchpad = (launch_pad_pda: string) => {
   const toastRef = useRef<ReturnType<typeof toast>>();
@@ -36,9 +37,11 @@ const useStartLaunchpad = (launch_pad_pda: string) => {
         poolData.tokenMint
       );
     },
-    onSuccess: (result: any) => {
+    onSuccess: ({ tx }) => {
       toast.update(toastRef.current!, {
-        render: "Launch pool started",
+        render: (
+          <TxSubmitted message="Launch pool started successfully" txHash={tx} />
+        ),
         type: "success",
         autoClose: 5000,
         isLoading: false,
@@ -93,6 +96,7 @@ export async function startLaunchPool(
     .rpc();
   console.log("Start launch pool in tx: ", "\n", tx);
   console.log("********************************");
+  return { tx };
 }
 
 export default useStartLaunchpad;
