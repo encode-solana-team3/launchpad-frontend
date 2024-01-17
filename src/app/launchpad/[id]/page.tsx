@@ -11,6 +11,7 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "react-toastify";
+import useClaimToken from "@/hooks/useClaimToken";
 
 type Props = {
   params: {
@@ -25,6 +26,9 @@ const LaunchpadDetailPage: React.FC<Props> = ({ params }) => {
     params.id
   );
   const [amount, setAmount] = useState(100);
+  const { mutate: mutateClaimToken, isPending: isClaiming } = useClaimToken(
+    params.id
+  );
 
   const handleBuyToken = async () => {
     if (!launchpad) return;
@@ -107,7 +111,9 @@ const LaunchpadDetailPage: React.FC<Props> = ({ params }) => {
         ) : null}
 
         {dayjs(launchpad.unlockDate.toNumber() * 1000).isBefore(dayjs()) ? (
-          <Button>Step 6: User claim token</Button>
+          <Button onClick={() => mutateClaimToken()}>
+            Step 6: User claim token
+          </Button>
         ) : null}
       </div>
     </div>

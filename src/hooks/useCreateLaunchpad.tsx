@@ -16,6 +16,7 @@ import {
   ASSOCIATED_TOKEN_PROGRAM_ID,
   TOKEN_PROGRAM_ID,
 } from "@solana/spl-token";
+import TxSubmitted from "@/components/TxSubmitted";
 
 const useCreateLaunchpad = () => {
   const toastRef = useRef<ReturnType<typeof toast>>();
@@ -35,7 +36,7 @@ const useCreateLaunchpad = () => {
         return Promise.reject(new Error("Program not found"));
       }
       toastRef.current = toast.loading("Creating launchpad...");
-      await createNativeFairlaunchPool(
+      return await createNativeFairlaunchPool(
         program,
         wallet.publicKey,
         new PublicKey(payload.mint),
@@ -48,7 +49,12 @@ const useCreateLaunchpad = () => {
     },
     onSuccess: (result: any) => {
       toast.update(toastRef.current!, {
-        render: "Launchpad created",
+        render: (
+          <TxSubmitted
+            txHash={result!.tx}
+            message={"Launchpad created successfully"}
+          />
+        ),
         type: "success",
         autoClose: 5000,
         isLoading: false,
@@ -115,6 +121,7 @@ export async function createNativeFairlaunchPool(
 
   console.log("Create a new launchpool in tx: ", "\n", tx);
   console.log("********************************");
+  return { tx };
 }
 
 export default useCreateLaunchpad;

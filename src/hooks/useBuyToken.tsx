@@ -12,6 +12,8 @@ import {
   findVaultAccount,
 } from "@/utils/account";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import TxSubmitted from "@/components/TxSubmitted";
+import React from "react";
 
 const useBuyToken = (launch_pad_pda: string) => {
   const toastRef = useRef<ReturnType<typeof toast>>();
@@ -21,7 +23,6 @@ const useBuyToken = (launch_pad_pda: string) => {
   return useMutation({
     mutationKey: ["buyToken", launch_pad_pda],
     mutationFn: async (amount: number) => {
-      console.log("amount: ", amount);
       if (!wallet?.publicKey) {
         return Promise.reject(new Error("Please connect your wallet"));
       }
@@ -61,11 +62,11 @@ const useBuyToken = (launch_pad_pda: string) => {
 
       console.log("amount: ", _mustPay.toString(), _balance.toString());
 
-      await buyToken(program, launch_pool, wallet.publicKey, amount);
+      return await buyToken(program, launch_pool, wallet.publicKey, amount);
     },
-    onSuccess: (result: any) => {
+    onSuccess: ({ tx }) => {
       toast.update(toastRef.current!, {
-        render: "Token bought",
+        render: <TxSubmitted txHash={tx} message="Token bought successfully" />,
         type: "success",
         autoClose: 5000,
         isLoading: false,
@@ -131,6 +132,7 @@ export async function buyToken(
   const data = await program.account.userPool.fetch(user_pool);
   console.log("User pool account: ", data.amount.toNumber());
   console.log("********************************");
+  return { tx };
 }
 
 export default useBuyToken;
