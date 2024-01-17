@@ -55,7 +55,6 @@ const useCreateLaunchpad = () => {
       });
     },
     onError: (error) => {
-      console.error(error);
       toast.update(toastRef.current!, {
         render: error.message,
         type: "error",
