@@ -20,12 +20,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AppProvider>
-          <div className="flex flex-col h-screen">
+          <div className="flex flex-col h-screen ">
             <div className="navbar flex h-20 flex-row md:mb-2 shadow-lg bg-black text-neutral-content border-b border-zinc-600 bg-opacity-66">
               <WalletButton />
             </div>
 
-            <main>{children}</main>
+            <main className="p-3">{children}</main>
           </div>
         </AppProvider>
       </body>
