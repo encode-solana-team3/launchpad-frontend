@@ -20,7 +20,7 @@ const LaunchpadView = () => {
     <div className="space-y-4 my-4">
       <h1 className="uppercase">Launchpad list</h1>
       <Separator />
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {data?.map((launchpad, index) => {
           return (
             <Card key={launchpad.publicKey.toBase58()}>
