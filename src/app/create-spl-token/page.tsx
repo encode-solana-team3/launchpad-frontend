@@ -83,8 +83,9 @@ const CreateSplTokenPage = () => {
           signers: [mint_account],
         });
 
-        await connection.confirmTransaction(signature, "confirmed");
+        const tx = await connection.confirmTransaction(signature, "confirmed");
         setMint(mint_account.publicKey.toString());
+        resolve(tx);
       }),
       {
         pending: "Creating Token Mint",

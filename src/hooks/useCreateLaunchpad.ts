@@ -25,6 +25,7 @@ const useCreateLaunchpad = () => {
   return useMutation({
     mutationKey: ["createLaunchpad"],
     mutationFn: async (payload: any) => {
+      console.log("payload: ", dayjs(payload.unlock_date).unix());
       if (!wallet?.publicKey) {
         toast.error("Please connect your wallet");
         return Promise.reject(new Error("Please connect your wallet"));
