@@ -16,21 +16,20 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How to use
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Demo for mvp: https://youtu.be/DdsSP1jwKeU
 
-## Learn More
+Website: https://encode-launchpad-team3.vercel.app
 
-To learn more about Next.js, take a look at the following resources:
+Step 1: Connect your wallet and create a new spl-token for your project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Step 2: Create a new launchpad
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Step 3: Creator start launchpad and user can be able to buy token
 
-## Deploy on Vercel
+Step 4: User buy token
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Step 5: Creator complete launchpad and user can be able to claim token
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Step 6: User claim token
